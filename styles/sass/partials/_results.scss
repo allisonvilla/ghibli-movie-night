@@ -1,0 +1,29 @@
+.results {
+    display: flex;
+    flex-direction: column;
+    // height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../assets/ponyo.png);
+    background-size: cover;
+    .wrapper {
+        margin:50px;
+        background-color: rgba($color: $dark-blue, $alpha: .6);
+        border-radius: 5px;
+        height:80%;
+        width:80%;
+        padding:30px;
+        text-align: center;
+        color:white;
+        #movie-img {
+            width: 60%;
+            height:100%;
+            margin: 0 auto;
+            opacity: 1;
+        }
+        img {
+            max-width: 100%;
+        }
+    }
+}
+

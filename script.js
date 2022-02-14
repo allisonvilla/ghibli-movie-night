@@ -1,52 +1,45 @@
-// To Do
-    // Bare bones HTML
-    // JS stuff
-    // Style it - CSS
-
 const ghibliApp = {}
 
-ghibliApp.init = function() {
+ghibliApp.apiUrl = 'https://ghibliapi.herokuapp.com/films/'; 
 
+ghibliApp.init = function() {
+    // Event listeners will go here
 }
 
 // Define a function which accepts an array as an argument and gives back a randomly chosen value from within that array
-ghibliApp.arrayRandomiser = function (array) {
+ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
-  // console.log(arrayIndex);
   return array[arrayIndex]
 }
 
-
-
-fetch('https://ghibliapi.herokuapp.com/films/')
+fetch(ghibliApp.apiUrl)
     .then(function(response) {
         return response.json();
     })
     .then(function(jsonResponse){
         console.log(jsonResponse);
         // Call randomizer function to narrow results to one movie choice
-        const randomResult = ghibliApp.arrayRandomiser(jsonResponse);
-        ghibliApp.displayMovie(randomResult); 
+        ghibliApp.randomResult = ghibliApp.arrayRandomiser(jsonResponse);
+        ghibliApp.displayMovie(ghibliApp.randomResult); 
     }); 
 
 ghibliApp.displayMovie = function(apiData) {
-    // Target the elements where we want to put movie data
+    // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
     ghibliApp.descEl = document.querySelector('#movie-description');
     ghibliApp.imgContainer = document.querySelector('#movie-img'); 
-    
-    const movieTitle = apiData.title;
-    const movieDesc = apiData.description;
-    // display title and description
-    ghibliApp.titleEl.innerHTML = movieTitle;
-    ghibliApp.descEl.innerHTML = movieDesc;
-    // create an image element
+    // Store title and description from json response 
+    ghibliApp.movieTitle = apiData.title;
+    ghibliApp.movieDesc = apiData.description;
+    // Display title and description
+    ghibliApp.titleEl.innerHTML = ghibliApp.movieTitle;
+    ghibliApp.descEl.innerHTML = ghibliApp.movieDesc;
+    // Create an image element
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
     image.alt = `${apiData.title}'s movie banner`;
-    // append image element to div (ghibliApp.imgContainer)
+    // Append image element to div (ghibliApp.imgContainer)
     ghibliApp.imgContainer.appendChild(image);
-   
 }
 
 ghibliApp.init(); 

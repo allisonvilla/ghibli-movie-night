@@ -4,12 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Studio Ghibli Movie Night</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <h2 id="movie-title"></h2>
-    <h3 id="movie-description"></h3>
-    <div id="movie-img"></div>
+    <header>
+        <h1>Studio Ghibli Movie Night</h1>
+        <h2>What movie should you watch tonight?</h2>
+        <button>Find out now!</button>
+    </header>
+
+    
+    <div class="results">
+        <div class="wrapper">
+            <h2 id="movie-title"></h2>
+            <h3 id="movie-description"></h3>
+            <hr>
+            <div id="movie-img"></div>
+
+            <button>Find another!</button>
+        </div>
+    </div>
+
     <script src="./script.js"></script>
+    
 </body>
 </html>
