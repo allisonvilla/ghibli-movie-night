@@ -1,0 +1,17 @@
+// Fetch film database from https://ghibliapi.herokuapp.com/
+// Landing page for user with game title, short description, and a Start Game button
+
+// Start Game button below the description calls function to begin the round
+    // +1 to numOfRounds variable
+// Loop through film array and randomly select a film
+// Assign film title to a variable called correctAnswer
+// Print film description to DOM
+// Print correct film title as one of four responses
+// Select the following three film titles from array, print them as “dummy” responses
+// If the answer selected by the user == correctAnswer
+    // +1 to Score variable if the user submits the correct response 
+    // Else, do not increase score if != correctAnswer
+// After response has been evaluated and score updated, begin new round until numOfRounds === 4
+
+// Once numOfRounds === 4, show end game screen
+    // End game screen shows final score and button to start again
