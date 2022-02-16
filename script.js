@@ -61,6 +61,7 @@ ghibliApp.displayMovie = function(apiData) {
     // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
     ghibliApp.descEl = document.querySelector('#movie-description');
+
     ghibliApp.imgContainer = document.querySelector('#movie-img'); 
     // Store title and description from json response 
     movieTitle = apiData.title;
@@ -79,7 +80,10 @@ ghibliApp.displayMovie = function(apiData) {
 ghibliApp.quizEventListener = function() {
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        ghibliApp.gameLogic(); 
+        ghibliApp.gameLogic();
+        const results = document.querySelector('.results');
+
+        results.style.display = 'flex';
     });
 }
 

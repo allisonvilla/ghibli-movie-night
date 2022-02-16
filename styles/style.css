@@ -241,6 +241,41 @@ header {
   color: white;
 }
 
+.quiz {
+  background-image: url("../assets/400691.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+.quiz .wrapper {
+  margin: 50px;
+  background-color: rgba(44, 115, 134, 0.6);
+  border-radius: 5px;
+  height: 80%;
+  width: 80%;
+  padding: 30px;
+  text-align: center;
+  justify-content: center;
+  color: white;
+}
+.quiz .wrapper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.quiz .wrapper form input {
+  display: none;
+}
+.quiz .wrapper form label {
+  padding: 10px;
+  width: 50%;
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px black;
+}
+
 html {
   font-size: 125%;
 }
@@ -263,6 +298,10 @@ button {
   box-shadow: 5px 5px 10px black;
   border-radius: 5px;
   margin: 50px 0;
+}
+
+img {
+  max-width: 100%;
 }
 
 h1 {
@@ -290,23 +329,23 @@ hr {
   align-items: center;
   background-image: url(../assets/ponyo.png);
   background-size: cover;
+  display: none;
 }
 .results .wrapper {
   margin: 50px;
   background-color: rgba(44, 115, 134, 0.6);
   border-radius: 5px;
+  color: black;
   height: 80%;
   width: 80%;
   padding: 30px;
   text-align: center;
   color: white;
 }
-.results .wrapper #movie-img {
+
+#movie-img {
   width: 60%;
   height: 100%;
   margin: 0 auto;
   opacity: 1;
-}
-.results .wrapper img {
-  max-width: 100%;
 }
