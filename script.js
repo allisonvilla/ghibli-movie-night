@@ -38,15 +38,24 @@ ghibliApp.getMovie = function() {
 }
 
 // Function which sets up the game 
+
+// Sylvia's great idea - create another array containing 4 random movie objects (from the jsonResponse), then use forEach() to put them into variables and radio inputs etc. 
+
 ghibliApp.gameSetup = function(apiData) {
     // Select 4 random movies from the array using arrayRandomiser()
     // There is currently a small chance it will choose the same movie twice 🤔
-    const movieOne = ghibliApp.arrayRandomiser(apiData); 
-    const movieTwo = ghibliApp.arrayRandomiser(apiData); 
-    const movieThree = ghibliApp.arrayRandomiser(apiData); 
-    const correctMovie = ghibliApp.arrayRandomiser(apiData); 
+    
+    console.log(apiData);
+    const movieArray = [apiData]     
+
+    
+    // const movieOne = ghibliApp.arrayRandomiser(apiData); 
+    // const movieTwo = ghibliApp.arrayRandomiser(apiData); 
+    // const movieThree = ghibliApp.arrayRandomiser(apiData); 
+    // const correctMovie = ghibliApp.arrayRandomiser(apiData); 
     // Store the titles of the above movie arrays into inputs and correctAnswer variable
     // Currently the 4th option is always the right answer 🤔 Should figure out way to randomize this 
+        // Possible solution - limit the range each movie can be selected from
     document.querySelector('#choice-1').value = movieOne.title; 
     document.querySelector('#label-1').textContent = movieOne.title; 
     document.querySelector('#choice-2').value = movieTwo.title; 
@@ -75,6 +84,7 @@ ghibliApp.displayMovie = function(apiData) {
     // Create an image element
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
+    // Should probably change the alt text to not give away the answer lol
     image.alt = `${apiData.title}'s movie banner`;
     // Append image element to div (ghibliApp.imgContainer)
     ghibliApp.imgContainer.appendChild(image);
