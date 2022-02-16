@@ -241,6 +241,44 @@ header {
   color: white;
 }
 
+button {
+  padding: 10px 30px;
+  background-color: #49c24d;
+  border: none;
+  font-family: "Inter", sans-serif;
+  color: white;
+  box-shadow: 5px 5px 10px black;
+  border-radius: 5px;
+  margin: 50px 0;
+}
+button:hover {
+  background-color: #123013;
+  color: white;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 200;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+hr {
+  color: white;
+  width: 70%;
+  opacity: 70%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .quiz {
   background-image: url("../assets/400691.png");
   background-size: cover;
@@ -266,6 +304,11 @@ header {
 .quiz .wrapper form input {
   display: none;
 }
+.quiz .wrapper form input:checked + label {
+  background-color: #2c7386;
+  color: white;
+  font-weight: 300;
+}
 .quiz .wrapper form label {
   padding: 10px;
   width: 50%;
@@ -274,6 +317,12 @@ header {
   color: black;
   border-radius: 5px;
   box-shadow: 3px 3px 5px black;
+}
+.quiz .wrapper form label:hover, .quiz .wrapper form label:focus {
+  cursor: pointer;
+  font-weight: 300;
+  color: white;
+  background-color: #2c7386;
 }
 
 html {
@@ -287,39 +336,6 @@ body {
 
 h3 {
   font-weight: 200;
-}
-
-button {
-  padding: 10px 30px;
-  background-color: #49c24d;
-  border: none;
-  font-family: "Inter", sans-serif;
-  color: white;
-  box-shadow: 5px 5px 10px black;
-  border-radius: 5px;
-  margin: 50px 0;
-}
-
-img {
-  max-width: 100%;
-}
-
-h1 {
-  font-size: 4rem;
-  font-weight: 200;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-family: "JetBrains Mono", monospace;
-}
-
-hr {
-  color: white;
-  width: 70%;
-  opacity: 70%;
-  margin-top: 40px;
-  margin-bottom: 40px;
 }
 
 .results {

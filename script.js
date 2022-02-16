@@ -76,7 +76,7 @@ ghibliApp.displayMovie = function(apiData) {
     ghibliApp.imgContainer.appendChild(image);
 }
 
-// Add an event listener which will call gameLogic() when submit button is clicked 
+// Add an event listener which will call gameLogic() when submit button is clicked  
 ghibliApp.quizEventListener = function() {
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -84,14 +84,23 @@ ghibliApp.quizEventListener = function() {
         const results = document.querySelector('.results');
 
         results.style.display = 'flex';
-    });
+
+        // reset selection to the first option
+        const firstAnswer = document.querySelector('#choice-1');
+        firstAnswer.checked = true;
+        console.log(firstAnswer);
+    });    
 }
+
 
 ghibliApp.gameLogic = function() {
     console.log('gameLogic() is being called');
     // Increase numRounds count
     ghibliApp.numRounds++; 
     console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
+
+    
+
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
     console.log(`User input was ${userInput}`);
@@ -114,5 +123,6 @@ ghibliApp.gameLogic = function() {
         // Show final score
     }
 }
+
 
 ghibliApp.init(); 

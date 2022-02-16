@@ -19,8 +19,13 @@
             align-items: center; 
             input {
                 display: none;
+                &:checked + label {
+                    background-color: $dark-blue;
+                    color:white;            
+                    font-weight: 300;
+                }
             }
-            label {
+            label { 
                 padding: 10px;
                 width:50%;
                 margin-top:10px;
@@ -28,8 +33,16 @@
                 color: black;
                 border-radius: 5px;
                 box-shadow: 3px 3px 5px black;
-            }
+                &:hover, &:focus {
+                    cursor: pointer;
+                    font-weight: 300;  
+                    color: white; 
+                    background-color: $dark-blue;
+                }
+            } 
+            
+
         }
     }
-}
+} 
 
