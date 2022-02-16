@@ -10,9 +10,10 @@ ghibliApp.numRounds = 0;
 
 ghibliApp.init = function() {
     ghibliApp.getMovie();
+    ghibliApp.quizEventListener();
 }
 
-// A function which accepts an array as an argument and returns a randomly chosen value from within that array
+// Function which accepts an array as an argument and returns a randomly chosen value from within that array
 ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
   return array[arrayIndex]; 
@@ -23,7 +24,7 @@ ghibliApp.getMovie = function() {
     url.search = new URLSearchParams({
         // Only grabbing the fields we need
         fields: 'title,description,movie_banner',
-        // I tried to increase this limit so we access more of the database (currently only returns same 22 movies) - doesn't work for some reason
+        // I tried to increase this limit so we access more of the database (currently only returns same 22 movies) - doesn't work for some reason 🤔
         limit: 100
     });
     fetch(url)
@@ -39,7 +40,7 @@ ghibliApp.getMovie = function() {
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
     // Select 4 random movies from the array using arrayRandomiser()
-    // There is currently a small chance it will choose the same movie twice 
+    // There is currently a small chance it will choose the same movie twice 🤔
     const movieOne = ghibliApp.arrayRandomiser(apiData); 
     const movieTwo = ghibliApp.arrayRandomiser(apiData); 
     const movieThree = ghibliApp.arrayRandomiser(apiData); 
@@ -80,15 +81,22 @@ ghibliApp.displayMovie = function(apiData) {
 }
 
 // Add an event listener which will call gameLogic() when submit button is clicked 
+ghibliApp.quizEventListener = function() {
+    document.querySelector('#quiz-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        ghibliApp.gameLogic(); 
+    });
+}
 
 ghibliApp.gameLogic = function() {
+    console.log('gameLogic() is being called');
     // Compare user input to correct answer
 
     // Add points if applicable
 
     // Increase numRounds count
 
-    // If numRounds < 4, call displayMovie() again to begin new round
+    // If numRounds < 4, call gameSetup() again to begin new round
 
     // End game when numRounds == 4
 
