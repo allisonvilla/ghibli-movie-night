@@ -250,7 +250,7 @@ button {
   color: white;
   box-shadow: 5px 5px 10px black;
   border-radius: 5px;
-  margin: 50px 0;
+  margin: 20px 0;
 }
 button:hover {
   background-color: #123013;
@@ -326,6 +326,10 @@ hr {
   font-weight: 300;
   color: white;
   background-color: #2c7386;
+}
+.quiz .wrapper .submit {
+  margin: 10px;
+  opacity: 85%;
 }
 
 html {

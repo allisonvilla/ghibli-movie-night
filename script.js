@@ -36,6 +36,7 @@ ghibliApp.correctAnswer = '';
 ghibliApp.userScore = 0; 
 ghibliApp.numRounds = 0; 
 
+
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
 
@@ -88,20 +89,53 @@ ghibliApp.displayMovie = function(apiData) {
 
 // Add an event listener which will call gameLogic() when submit button is clicked  
 ghibliApp.quizEventListener = function() {
+
+    const checkButton = document.querySelector('.check');
+
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        checkButton.style.display = 'none';
+        ghibliApp.answerStyling();
+
+
+    });    
+    document.querySelector('.submit').addEventListener('click', function (event) {
         event.preventDefault();
         ghibliApp.gameLogic();
         const results = document.querySelector('.results');
-
         results.style.display = 'flex';
-
-        // reset selection to the first option
-        const firstAnswer = document.querySelector('#choice-1');
-        firstAnswer.checked = true;
-        console.log(firstAnswer);
-    });    
+        let labels = document.querySelectorAll('label');
+        labels.forEach(label => {
+            label.style.backgroundColor = '';
+            label.style.color = '';
+        });
+        checkButton.style.display = 'block';
+    });
 }
 
+// A method to hold the logic to check correct answer and change styling of correct/wrong answers 
+ghibliApp.answerStyling = function () {
+    // checkButton.style.display = 'block';
+    let selectedAnswer = document.querySelector('input[name="quiz"]:checked');
+    let labels = document.querySelectorAll('label')
+    console.log(labels);
+    // Compare user input to correct answer, increase score if necessary
+    labels.forEach(label => {
+        console.log(label);
+        if (label.textContent == selectedAnswer.value) {
+            if (selectedAnswer.value == ghibliApp.correctAnswer) {
+                console.log('hi');
+                label.style.backgroundColor = 'Green'
+            } else {
+                label.style.backgroundColor = 'Red'
+            }
+        }
+    });
+
+
+
+    
+}
 
 ghibliApp.gameLogic = function() {
     console.log('gameLogic() is being called');
@@ -109,15 +143,14 @@ ghibliApp.gameLogic = function() {
     ghibliApp.numRounds++; 
     console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
 
-    
-
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
     console.log(`User input was ${userInput}`);
     // Compare user input to correct answer, increase score if necessary
     if (userInput == ghibliApp.correctAnswer) {
-        ghibliApp.userScore++; 
+        ghibliApp.userScore++;
     } 
+
     console.log(`User's current score is ${ghibliApp.userScore}`);
     // If numRounds < 4, call getMovie() to get 4 new movies
     if (ghibliApp.numRounds < 4) {

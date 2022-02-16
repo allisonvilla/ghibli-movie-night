@@ -4,7 +4,7 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    .wrapper {
+    .wrapper { 
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
         border-radius: 5px;
@@ -38,13 +38,16 @@
                 box-shadow: 3px 3px 5px black;
                 &:hover, &:focus {
                     cursor: pointer;
-                    font-weight: 300;  
+                    font-weight: 300;
                     color: white; 
                     background-color: $dark-blue;
                 }
             } 
-            
 
+        }
+        .submit {
+            margin:10px;
+            opacity: 85%;
         }
     }
 } 
