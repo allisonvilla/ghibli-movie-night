@@ -38,10 +38,16 @@ ghibliApp.numRounds = 0;
 
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
-    console.log(apiData);
-    // Display movie titles as options
+
+    // Update span for round
+    const roundEl = document.querySelector('span');
+    roundEl.innerHTML = this.numRounds + 1;
+    // Display movie titles as options including description for correct movie
+    const paragraphElement = document.querySelector('.questionParagraph')
+    
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
+
     choiceElement.forEach(choice => {
         for(let i = 0; i < labelElement.length; i++) {
             choiceElement[i].value = apiData[i].title;
@@ -51,6 +57,9 @@ ghibliApp.gameSetup = function(apiData) {
     // Assign the correct movie answer to a correctMovie variable    
     const correctMovie = ghibliApp.arrayRandomiser(apiData);
     ghibliApp.correctAnswer = correctMovie.title; 
+
+    paragraphElement.innerHTML = correctMovie.description
+    
     // Display correct movie
     ghibliApp.displayMovie(correctMovie); 
     console.log(`The correct movie is ${correctMovie.title}`);
@@ -68,6 +77,7 @@ ghibliApp.displayMovie = function(apiData) {
     movieDesc = apiData.description;
     // Display description
     ghibliApp.descEl.innerHTML = movieDesc;
+    ghibliApp.titleEl.innerHTML = movieTitle
     // Create an image element
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
