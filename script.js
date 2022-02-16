@@ -2,18 +2,12 @@ const ghibliApp = {}
 
 ghibliApp.apiUrl = 'https://ghibliapi.herokuapp.com/films/'; 
 
-// Declare quiz game variables so they are accessible to be changed later
-// Can maybe put these in the init later??
-ghibliApp.correctAnswer = '';
-ghibliApp.userAnswer = '';
-ghibliApp.numRounds = 0; 
-
 ghibliApp.init = function() {
     ghibliApp.getMovie();
     ghibliApp.quizEventListener();
 }
 
-// Function which accepts an array as an argument and returns a randomly chosen value from within that array
+// Function which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
   return array[arrayIndex]; 
@@ -42,36 +36,28 @@ ghibliApp.getMovie = function() {
         }); 
 }
 
+// Declare quiz game variables so they are accessible across app scope
+ghibliApp.correctAnswer = '';
+ghibliApp.numRounds = 0; 
+
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
-    
     console.log(apiData);
-
-
-    // const currentAnswer = $(`input[name=${answerKey}]:checked`).val();
-
-    // assign the correct movie answer to a correctMovie variable    
-    const correctMovie = ghibliApp.arrayRandomiser(apiData); 
-
-    const choiceElement = document.querySelectorAll('#choice');
-    const labelElement = document.querySelectorAll('#label');
-    
-
+    // Display movie titles as options
+    const choiceElement = document.querySelectorAll('.choice');
+    const labelElement = document.querySelectorAll('.label');
     choiceElement.forEach(choice => {
         for(let i = 0; i < labelElement.length; i++) {
             choiceElement[i].value = apiData[i].title;
             labelElement[i].textContent = apiData[i].title;
-            console.log(i);
         }
     });
-
-    // Assign correct answer variable
+    // Assign the correct movie answer to a correctMovie variable    
+    const correctMovie = ghibliApp.arrayRandomiser(apiData);
     ghibliApp.correctAnswer = correctMovie.title; 
-    
     // Display correct movie
     ghibliApp.displayMovie(correctMovie); 
     console.log(`The correct movie is ${correctMovie.title}`);
-
 }
 
 // Function which displays the correct movie description and image
@@ -104,13 +90,10 @@ ghibliApp.quizEventListener = function() {
 
 ghibliApp.gameLogic = function() {
     console.log('gameLogic() is being called');
-    // store users input
-    //const userChoice = $(`input[name=${quiz}]:checked`).val();
-    let userChoice = document.querySelector('input').value; 
-    console.log(userChoice);
-
+    // Store user input
+    let userInput = document.querySelector('input[name="quiz"]:checked').value; 
+    console.log(userInput);
     // Compare user input to correct answer
-
 
     // Add points if applicable
 
