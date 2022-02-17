@@ -70,8 +70,15 @@
         justify-content: center;
         height: 70%; 
 
-        p {
-            font-size: 1.3rem; 
+        .quote {
+            font-style: italic; 
+            font-size: 1.3rem;
+        }
+
+        .source {
+            font-size: 1rem; 
+            margin-top: 0; 
+            margin-bottom: 70px; 
         }
 
         button {
