@@ -230,6 +230,19 @@ html {
   overflow: hidden;
 }
 
+html {
+  font-size: 125%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 200;
+}
+
+h3 {
+  font-weight: 200;
+}
+
 header {
   background-image: url(../assets/ingarsguidetil_3070453b.jpg);
   background-size: cover;
@@ -330,19 +343,6 @@ hr {
 .quiz .wrapper .submit {
   margin: 10px;
   opacity: 85%;
-}
-
-html {
-  font-size: 125%;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  font-weight: 200;
-}
-
-h3 {
-  font-weight: 200;
 }
 
 .results {

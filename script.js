@@ -148,9 +148,8 @@ ghibliApp.gameLogic = function() {
     console.log(`User input was ${userInput}`);
     // Compare user input to correct answer, increase score if necessary
     if (userInput == ghibliApp.correctAnswer) {
-        ghibliApp.userScore++;
+        ghibliApp.userScore++; 
     } 
-
     console.log(`User's current score is ${ghibliApp.userScore}`);
     // If numRounds < 4, call getMovie() to get 4 new movies
     if (ghibliApp.numRounds < 4) {
@@ -166,6 +165,5 @@ ghibliApp.gameLogic = function() {
         // Show final score
     }
 }
-
 
 ghibliApp.init(); 
