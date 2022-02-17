@@ -6,7 +6,7 @@ ghibliApp.init = function() {
     ghibliApp.getMovie();
     ghibliApp.quizEventListener();
     // Event listener for Play Now button
-    document.querySelector('.playNow').addEventListener('click', function (event) {
+    document.querySelector('.play-now').addEventListener('click', function (event) {
         event.preventDefault();
         document.querySelector('.quiz').scrollIntoView({
             behavior: 'smooth'
@@ -49,15 +49,14 @@ ghibliApp.correctAnswer = '';
 ghibliApp.userScore = 0; 
 ghibliApp.numRounds = 0; 
 
-// Function which sets up the game 
+// Method which sets up game display
 ghibliApp.gameSetup = function(apiData) {
     // Hide the results div
     document.querySelector('.results').style.display = 'none'; 
-    // Update span for round
-    const roundEl = document.querySelector('span');
+    // Update question number span
+    const roundEl = document.querySelector('.question-number');
     roundEl.innerHTML = this.numRounds + 1;
     // Display movie titles as options
-    const paragraphElement = document.querySelector('.questionParagraph')
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
     choiceElement.forEach(choice => {
@@ -66,14 +65,14 @@ ghibliApp.gameSetup = function(apiData) {
             labelElement[i].textContent = apiData[i].title;
         }
     });
-    // Display correct movie description
-    paragraphElement.innerHTML = correctMovie.description; 
     // Assign the correct movie answer to a correctMovie variable    
     const correctMovie = ghibliApp.arrayRandomiser(apiData);
     ghibliApp.correctAnswer = correctMovie.title; 
+    // Display correct movie description
+    const paragraphElement = document.querySelector('.question-paragraph');
+    paragraphElement.innerHTML = correctMovie.description; 
     // Display correct movie
     ghibliApp.displayMovie(correctMovie); 
-    console.log(`The correct movie is ${correctMovie.title}`);
 }
 
 // Method which displays the correct movie description and image in a div below the quiz
@@ -90,7 +89,7 @@ ghibliApp.displayMovie = function(apiData) {
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
     image.alt = `A Studio Ghibli movie banner`;
-    // Append image element to div (ghibliApp.imgContainer)
+    // Append image element to image container div
     ghibliApp.imgContainer.appendChild(image);
 }
 
@@ -139,7 +138,7 @@ ghibliApp.answerStyling = function() {
     console.log(labels);
     // Compare user input to correct answer, increase score if necessary
     labels.forEach(label => {
-        console.log(label);
+        // Change label colour based on user answer
         if (label.textContent == selectedAnswer.value) {
             if (selectedAnswer.value == ghibliApp.correctAnswer) {
                 label.style.backgroundColor = 'Green'
