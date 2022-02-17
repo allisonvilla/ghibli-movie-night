@@ -11,6 +11,10 @@ ghibliApp.init = function() {
             behavior: 'smooth'
         });
     });
+    // Event listener for 'Play Again' reload button
+    document.querySelector('#reload').addEventListener('click', function(event) {
+        window.location.reload(); 
+    });
     ghibliApp.quizEventListener();
 }
 
@@ -39,7 +43,7 @@ ghibliApp.getMovie = function() {
         }); 
 }
 
-// Declare quiz game variables so they are accessible across app scope
+// Initialize quiz game variables
 ghibliApp.correctAnswer = '';
 ghibliApp.userScore = 0; 
 ghibliApp.numRounds = 0; 
@@ -170,6 +174,7 @@ ghibliApp.gameLogic = function() {
         document.querySelector('.results').innerHTML = '';
         // Show end game results
         document.querySelector('.end-game').style.display = 'flex';
+        document.querySelector('.score').textContent = `${ghibliApp.userScore}`; 
     }
 }
 

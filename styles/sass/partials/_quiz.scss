@@ -54,11 +54,28 @@
             opacity: 0%;
 
         }
-
-        // End Game Results
-        .end-game {
-            display: none; 
-        }
     }
 } 
 
+// End Game Results
+.end-game {
+    display: none; 
+    flex-direction: column; 
+    height: 100%; 
+
+    .p-btn-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        height: 70%; 
+
+        p {
+            font-size: 1.3rem; 
+        }
+
+        button {
+            max-width: 50%; 
+        }
+    }
+}
