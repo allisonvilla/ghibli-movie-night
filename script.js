@@ -71,16 +71,22 @@ ghibliApp.displayMovie = function(apiData) {
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
     image.alt = `A Studio Ghibli movie banner`;
-    // Append image element to div (ghibliApp.imgContainer)
+    // Append image element to image container div
     ghibliApp.imgContainer.appendChild(image);
 }
 
-// Add an event listener which will call gameLogic() when submit button is clicked 
+// Add an event listener which will call gameLogic() when submit button is clicked  
 ghibliApp.quizEventListener = function() {
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        ghibliApp.gameLogic(); 
-    });
+        ghibliApp.gameLogic();
+        const results = document.querySelector('.results');
+        results.style.display = 'flex';
+        // Reset selection to the first option
+        const firstAnswer = document.querySelector('#choice-1');
+        firstAnswer.checked = true;
+        console.log(firstAnswer);
+    });    
 }
 
 ghibliApp.gameLogic = function() {
