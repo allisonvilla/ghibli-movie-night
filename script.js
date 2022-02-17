@@ -5,7 +5,7 @@ ghibliApp.apiUrl = 'https://ghibliapi.herokuapp.com/films/';
 ghibliApp.init = function() {
     ghibliApp.getMovie();
     ghibliApp.quizEventListener();
-
+    // Event listener for Play Now button
     document.querySelector('.playNow').addEventListener('click', function (event) {
         event.preventDefault();
         document.querySelector('.quiz').scrollIntoView({
@@ -19,12 +19,13 @@ ghibliApp.startQuiz = function() {
     
 }
 
-// Function which accepts an array as an argument and returns a random index
+// Method which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
     return array[arrayIndex]; 
 }
 
+// Method that makes a request to the API and narrows the results into an array of 4 random movies
 ghibliApp.getMovie = function() {
     const url = new URL(ghibliApp.apiUrl); 
     url.search = new URLSearchParams({
@@ -47,7 +48,6 @@ ghibliApp.getMovie = function() {
 ghibliApp.correctAnswer = '';
 ghibliApp.userScore = 0; 
 ghibliApp.numRounds = 0; 
-
 
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
@@ -93,36 +93,40 @@ ghibliApp.displayMovie = function(apiData) {
     ghibliApp.imgContainer.appendChild(image);
 }
 
-// Add an event listener for submit button
+// Method that sets up event listeners for the quiz form and submit button
 ghibliApp.quizEventListener = function() {
     const checkButton = document.querySelector('.check');
     const submitButton = document.querySelector('.submit');
-
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
+        // Hide Check Answer button
         checkButton.style.display = 'none';
+        // Call method that colour codes the options as correct/incorrect
         ghibliApp.answerStyling();
-
+        // Display submit button
         submitButton.style.opacity = '1'
-
-
     });    
-    document.querySelector('.submit').addEventListener('click', function (event) {
+    document.querySelector('.submit').addEventListener('click', function(event) {
         event.preventDefault();
+        // Hide submit button
         submitButton.style.opacity = '0'
+        // Call game logic method
         ghibliApp.gameLogic();
+        // Display the results div
         const results = document.querySelector('.results');
         results.style.display = 'flex';
+        // Remove colour coded labels from previous answer
         let labels = document.querySelectorAll('label');
         labels.forEach(label => {
             label.style.backgroundColor = '';
             label.style.color = '';
         });
+        // Show check answer button
         checkButton.style.display = 'block';
     });
 }
 
-// A method to hold the logic to check correct answer and change styling of correct/wrong answers 
+// Method that changes the radio input styling of correct/wrong answers for user visibility
 ghibliApp.answerStyling = function() {
     // Display results div
     document.querySelector('.results').style.display = 'flex'; 
@@ -135,7 +139,6 @@ ghibliApp.answerStyling = function() {
         console.log(label);
         if (label.textContent == selectedAnswer.value) {
             if (selectedAnswer.value == ghibliApp.correctAnswer) {
-                console.log('hi');
                 label.style.backgroundColor = 'Green'
             } else {
                 label.style.backgroundColor = 'Red'
@@ -144,6 +147,7 @@ ghibliApp.answerStyling = function() {
     });
 }
 
+// Method that compares the user input to the correct answer and tracks round count and score
 ghibliApp.gameLogic = function() {
     console.log('gameLogic() is being called');
     // Increase numRounds count
