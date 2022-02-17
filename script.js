@@ -70,14 +70,11 @@ ghibliApp.gameSetup = function(apiData) {
 ghibliApp.displayMovie = function(apiData) {
     // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
-    ghibliApp.descEl = document.querySelector('#movie-description');
-
     ghibliApp.imgContainer = document.querySelector('#movie-img'); 
     // Store title and description from json response 
     movieTitle = apiData.title;
     movieDesc = apiData.description;
-    // Display description
-    ghibliApp.descEl.innerHTML = movieDesc;
+    // Display Title
     ghibliApp.titleEl.innerHTML = movieTitle
     // Create an image element
     const image = document.createElement('img');
@@ -114,7 +111,9 @@ ghibliApp.quizEventListener = function() {
 }
 
 // A method to hold the logic to check correct answer and change styling of correct/wrong answers 
-ghibliApp.answerStyling = function () {
+ghibliApp.answerStyling = function() {
+    // Display results div
+    document.querySelector('.results').style.display = 'flex'; 
     // checkButton.style.display = 'block';
     let selectedAnswer = document.querySelector('input[name="quiz"]:checked');
     let labels = document.querySelectorAll('label')
@@ -131,10 +130,6 @@ ghibliApp.answerStyling = function () {
             }
         }
     });
-
-
-
-    
 }
 
 ghibliApp.gameLogic = function() {
