@@ -1,9 +1,10 @@
-.quiz {
+.quiz-section {
     background-image: url('../assets/400691.png');
     background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
+
     .wrapper { 
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
@@ -13,12 +14,12 @@
         text-align: center;
         justify-content: center;
         color:white;
-        // display: flex;
+
         form {
             display: flex;
             flex-direction: column;
-            
             align-items: center; 
+
             input {
                 display: none; 
                 &:checked + label {
@@ -27,6 +28,7 @@
                     font-weight: 300;
                 }
             }
+
             label { 
                 padding: 10px;
                 margin-bottom: 10px;
@@ -45,10 +47,18 @@
             } 
 
         }
+
+        // Next Question Button
         .next {
             // margin:10px;
             opacity: 0%;
 
         }
+
+        // End Game Results
+        .end-game {
+            display: none; 
+        }
     }
 } 
+
