@@ -20,8 +20,24 @@ ghibliApp.init = function() {
 
 // Array of Ghibli Movie Quotes
 ghibliApp.quotes = [
-    {quote: `You cannot alter your fate. However you can rise to meet it.`,
-    source: `Hii-Sama, 'Princess Mononoke' (1997)`}
+    { quote: `You cannot alter your fate. However you can rise to meet it.`,
+    source: `Hii-Sama, 'Princess Mononoke' (1997)`}, 
+    { quote: `Try laughing. Then whatever scares you will go away.`, 
+    source: `Tatsuo Kusakabe, 'My Neighbor Totoro' (1988)`}, 
+    { quote: `Always believe in yourself. Do this and no matter where you are, you will have nothing to fear.`, 
+    source: `The Baron, 'The Cat Returns' (2002)`}, 
+    { quote: `Whenever someone creates something with all of their heart, then that creation is given a soul.`, 
+    source: `The Baron, 'The Cat Returns' (2002)`}, 
+    { quote: `It's not really important what color your dress is. What matters is the heart inside.`, 
+    source: `Kokiri, 'Kiki's Delivery Service' (1989)`}, 
+    { quote: `Just follow your heart and keep smiling.`, 
+    source: `'Kiki's Delivery Service' (1989)`}, 
+    { quote: `They say the best blaze burns brightest, when circumstances are at their worst.`, 
+    source: `Sophie Hatter, 'Howl's Moving Castle' (2004)`}, 
+    { quote: `No matter how many weapons you have, no matter how great your technology might be, the world cannot live without love.`, 
+    source: `Sheeta, 'Castle In The Sky' (1986)`}, 
+    { quote: `Once You've Met Someone, You Never Really Forget Them.`, 
+    source: `'Spirited Away' (2001)`}
 ]
 
 console.log(ghibliApp.quotes[0].quote);
