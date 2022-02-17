@@ -8,12 +8,12 @@
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
         border-radius: 5px;
-        height:80%;
-        width:80%;
+        width:90%;
         padding:30px;
         text-align: center;
         justify-content: center;
         color:white;
+        // display: flex;
         form {
             display: flex;
             flex-direction: column;
@@ -46,8 +46,9 @@
 
         }
         .submit {
-            margin:10px;
-            opacity: 85%;
+            // margin:10px;
+            opacity: 0%;
+
         }
     }
 } 

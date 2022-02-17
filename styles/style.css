@@ -323,8 +323,7 @@ hr {
   margin: 50px;
   background-color: rgba(44, 115, 134, 0.6);
   border-radius: 5px;
-  height: 80%;
-  width: 80%;
+  width: 90%;
   padding: 30px;
   text-align: center;
   -webkit-box-pack: center;
@@ -370,8 +369,7 @@ hr {
   background-color: #2c7386;
 }
 .quiz .wrapper .submit {
-  margin: 10px;
-  opacity: 85%;
+  opacity: 0%;
 }
 
 .results {
