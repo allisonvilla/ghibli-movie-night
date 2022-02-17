@@ -39,16 +39,13 @@ ghibliApp.numRounds = 0;
 
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
-
     // Update span for round
     const roundEl = document.querySelector('span');
     roundEl.innerHTML = this.numRounds + 1;
     // Display movie titles as options including description for correct movie
     const paragraphElement = document.querySelector('.questionParagraph')
-    
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
-
     choiceElement.forEach(choice => {
         for(let i = 0; i < labelElement.length; i++) {
             choiceElement[i].value = apiData[i].title;
@@ -58,9 +55,7 @@ ghibliApp.gameSetup = function(apiData) {
     // Assign the correct movie answer to a correctMovie variable    
     const correctMovie = ghibliApp.arrayRandomiser(apiData);
     ghibliApp.correctAnswer = correctMovie.title; 
-
-    paragraphElement.innerHTML = correctMovie.description
-    
+    paragraphElement.innerHTML = correctMovie.description; 
     // Display correct movie
     ghibliApp.displayMovie(correctMovie); 
     console.log(`The correct movie is ${correctMovie.title}`);
@@ -84,17 +79,13 @@ ghibliApp.displayMovie = function(apiData) {
     ghibliApp.imgContainer.appendChild(image);
 }
 
-// Add an event listener which will call gameLogic() when submit button is clicked  
+// Add an event listener for submit button
 ghibliApp.quizEventListener = function() {
-
     const checkButton = document.querySelector('.check');
-
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
         checkButton.style.display = 'none';
         ghibliApp.answerStyling();
-
-
     });    
     document.querySelector('.submit').addEventListener('click', function (event) {
         event.preventDefault();
@@ -137,7 +128,6 @@ ghibliApp.gameLogic = function() {
     // Increase numRounds count
     ghibliApp.numRounds++; 
     console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
-
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
     console.log(`User input was ${userInput}`);
