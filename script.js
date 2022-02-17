@@ -61,7 +61,6 @@ ghibliApp.displayMovie = function(apiData) {
     // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
     ghibliApp.descEl = document.querySelector('#movie-description');
-
     ghibliApp.imgContainer = document.querySelector('#movie-img'); 
     // Store title and description from json response 
     movieTitle = apiData.title;
@@ -72,7 +71,7 @@ ghibliApp.displayMovie = function(apiData) {
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
     image.alt = `A Studio Ghibli movie banner`;
-    // Append image element to div (ghibliApp.imgContainer)
+    // Append image element to image container div
     ghibliApp.imgContainer.appendChild(image);
 }
 
@@ -82,25 +81,19 @@ ghibliApp.quizEventListener = function() {
         event.preventDefault();
         ghibliApp.gameLogic();
         const results = document.querySelector('.results');
-
         results.style.display = 'flex';
-
-        // reset selection to the first option
+        // Reset selection to the first option
         const firstAnswer = document.querySelector('#choice-1');
         firstAnswer.checked = true;
         console.log(firstAnswer);
     });    
 }
 
-
 ghibliApp.gameLogic = function() {
     console.log('gameLogic() is being called');
     // Increase numRounds count
     ghibliApp.numRounds++; 
     console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
-
-    
-
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
     console.log(`User input was ${userInput}`);
@@ -123,6 +116,5 @@ ghibliApp.gameLogic = function() {
         // Show final score
     }
 }
-
 
 ghibliApp.init(); 
