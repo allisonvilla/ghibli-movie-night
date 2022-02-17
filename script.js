@@ -18,6 +18,14 @@ ghibliApp.init = function() {
     ghibliApp.quizEventListener();
 }
 
+// Array of Ghibli Movie Quotes
+ghibliApp.quotes = [
+    {quote: `You cannot alter your fate. However you can rise to meet it.`,
+    source: `Hii-Sama, 'Princess Mononoke' (1997)`}
+]
+
+console.log(ghibliApp.quotes[0].quote);
+
 // Method which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
@@ -152,10 +160,8 @@ ghibliApp.answerStyling = function() {
 ghibliApp.gameLogic = function() {
     // Increase numRounds count
     ghibliApp.numRounds++; 
-    console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
-    console.log(`User input was ${userInput}`);
     // Compare user input to correct answer, increase score if necessary
     if (userInput == ghibliApp.correctAnswer) {
         ghibliApp.userScore++; 
@@ -172,9 +178,15 @@ ghibliApp.gameLogic = function() {
         document.querySelector('.quiz').style.display = 'none'; 
         // Clear display
         document.querySelector('.results').innerHTML = '';
-        // Show end game results
+        // Display end game results
         document.querySelector('.end-game').style.display = 'flex';
         document.querySelector('.score').textContent = `${ghibliApp.userScore}`; 
+        // Display random quote
+        const quoteObject = ghibliApp.arrayRandomiser(ghibliApp.quotes);
+        const quote = quoteObject.quote;
+        const source = quoteObject.source; 
+        document.querySelector('.quote').textContent = `"${quote}"`;
+        document.querySelector('.source').textContent = `- ${source}`;
     }
 }
 
