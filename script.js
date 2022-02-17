@@ -56,7 +56,7 @@ ghibliApp.gameSetup = function(apiData) {
     // Update span for round
     const roundEl = document.querySelector('span');
     roundEl.innerHTML = this.numRounds + 1;
-    // Display movie titles as options including description for correct movie
+    // Display movie titles as options
     const paragraphElement = document.querySelector('.questionParagraph')
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
@@ -66,16 +66,17 @@ ghibliApp.gameSetup = function(apiData) {
             labelElement[i].textContent = apiData[i].title;
         }
     });
+    // Display correct movie description
+    paragraphElement.innerHTML = correctMovie.description; 
     // Assign the correct movie answer to a correctMovie variable    
     const correctMovie = ghibliApp.arrayRandomiser(apiData);
     ghibliApp.correctAnswer = correctMovie.title; 
-    paragraphElement.innerHTML = correctMovie.description; 
     // Display correct movie
     ghibliApp.displayMovie(correctMovie); 
     console.log(`The correct movie is ${correctMovie.title}`);
 }
 
-// Function which displays the correct movie description and image
+// Method which displays the correct movie description and image in a div below the quiz
 ghibliApp.displayMovie = function(apiData) {
     // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
@@ -84,7 +85,7 @@ ghibliApp.displayMovie = function(apiData) {
     movieTitle = apiData.title;
     movieDesc = apiData.description;
     // Display Title
-    ghibliApp.titleEl.innerHTML = movieTitle
+    ghibliApp.titleEl.innerHTML = movieTitle;
     // Create an image element
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
@@ -93,28 +94,30 @@ ghibliApp.displayMovie = function(apiData) {
     ghibliApp.imgContainer.appendChild(image);
 }
 
-// Method that sets up event listeners for the quiz form and submit button
+// Method that sets up event listeners for the quiz form and buttons
 ghibliApp.quizEventListener = function() {
     const checkButton = document.querySelector('.check');
-    const submitButton = document.querySelector('.submit');
+    const nextButton = document.querySelector('.next');
+    // Event listener when the user clicks "Check Answer"
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
         // Hide Check Answer button
         checkButton.style.display = 'none';
         // Call method that colour codes the options as correct/incorrect
         ghibliApp.answerStyling();
-        // Display submit button
-        submitButton.style.opacity = '1'
-    });    
-    document.querySelector('.submit').addEventListener('click', function(event) {
-        event.preventDefault();
-        // Hide submit button
-        submitButton.style.opacity = '0'
-        // Call game logic method
-        ghibliApp.gameLogic();
+        // Display next button
+        nextButton.style.opacity = '1';
         // Display the results div
         const results = document.querySelector('.results');
         results.style.display = 'flex';
+    });
+    // Event listener when the user answers a question and clicks "Next Question"
+    nextButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        // Hide submit button
+        nextButton.style.opacity = '0';
+        // Call game logic method
+        ghibliApp.gameLogic();
         // Remove colour coded labels from previous answer
         let labels = document.querySelectorAll('label');
         labels.forEach(label => {
@@ -149,7 +152,6 @@ ghibliApp.answerStyling = function() {
 
 // Method that compares the user input to the correct answer and tracks round count and score
 ghibliApp.gameLogic = function() {
-    console.log('gameLogic() is being called');
     // Increase numRounds count
     ghibliApp.numRounds++; 
     console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
