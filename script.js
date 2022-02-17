@@ -39,6 +39,8 @@ ghibliApp.numRounds = 0;
 
 // Function which sets up the game 
 ghibliApp.gameSetup = function(apiData) {
+    // Hide the results div
+    document.querySelector('.results').style.display = 'none'; 
     // Update span for round
     const roundEl = document.querySelector('span');
     roundEl.innerHTML = this.numRounds + 1;
