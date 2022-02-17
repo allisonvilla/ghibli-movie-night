@@ -5,12 +5,24 @@ ghibliApp.apiUrl = 'https://ghibliapi.herokuapp.com/films/';
 ghibliApp.init = function() {
     ghibliApp.getMovie();
     ghibliApp.quizEventListener();
+
+    document.querySelector('.playNow').addEventListener('click', function (event) {
+        event.preventDefault();
+        document.querySelector('.quiz').scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+}
+
+ghibliApp.startQuiz = function() {
+
+    
 }
 
 // Function which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
   const arrayIndex = Math.floor(Math.random() * array.length);
-  return array[arrayIndex]; 
+    return array[arrayIndex]; 
 }
 
 ghibliApp.getMovie = function() {
