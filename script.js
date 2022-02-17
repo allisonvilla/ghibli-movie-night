@@ -91,16 +91,20 @@ ghibliApp.displayMovie = function(apiData) {
 ghibliApp.quizEventListener = function() {
 
     const checkButton = document.querySelector('.check');
+    const submitButton = document.querySelector('.submit');
 
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
         checkButton.style.display = 'none';
         ghibliApp.answerStyling();
 
+        submitButton.style.opacity = '1'
+
 
     });    
     document.querySelector('.submit').addEventListener('click', function (event) {
         event.preventDefault();
+        submitButton.style.opacity = '0'
         ghibliApp.gameLogic();
         const results = document.querySelector('.results');
         results.style.display = 'flex';
