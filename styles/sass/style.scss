@@ -1,8 +1,16 @@
 // Setup Styles
 @import './partials/setup';
+// Variables
 @import './partials/variables';
+// Typography
 @import './partials/typography';
+// Header Styles
 @import './partials/header';
-@import './partials/baseStyles';
+// Base Styles
+@import './partials/base-styles';
+// Quiz Section and End Game Results
 @import './partials/quiz';
+// Correct Movie Display
 @import './partials/results';
+// Media Queries
+@import './partials/media-queries'; 
