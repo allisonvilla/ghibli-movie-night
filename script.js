@@ -169,6 +169,11 @@ ghibliApp.answerStyling = function() {
                 label.style.backgroundColor = 'Red';
             }
         }
+        // Always turn correct label green
+        if (label.textContent == ghibliApp.correctAnswer) {
+            label.style.backgroundColor = 'Green';
+            label.style.color = 'White'; 
+        }
     });
 }
 
