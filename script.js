@@ -105,28 +105,28 @@ ghibliApp.gameSetup = function(apiData) {
             labelElement[i].textContent = apiData[i].title;
         }
     });
-
     // Choose one of the movies from the array and assign it as the correct answer   
-    let correctMovie = ghibliApp.arrayRandomiser(apiData);
-    // Check if the new correct movie title has already been asked
-    if (ghibliApp.moviesAsked.includes(correctMovie.title)) {
-        // If it's been asked, run arrayRandomiser again
-        correctMovie = ghibliApp.arrayRandomiser(apiData);
+    let newMovie = ghibliApp.arrayRandomiser(apiData);
+    let correctMovie = '';
+    // Check if the new correct movie title has already been asked and choose a new one if it has
+    do {
+        newMovie = ghibliApp.arrayRandomiser(apiData);
         console.log(`This question has already been asked`);
-        console.log(`The new correct movie is ${correctMovie.title}`);
-    } else {
-        console.log(`This question has not been asked`);
-        // Assign the correct movie answer to a correctMovie variable 
-        ghibliApp.correctAnswer = correctMovie.title; 
-        // Push the correct movie title to the moviesAsked array
-        ghibliApp.moviesAsked.push(ghibliApp.correctAnswer); 
-        // Display correct movie description
-        const paragraphElement = document.querySelector('.question-paragraph');
-        paragraphElement.innerHTML = correctMovie.description; 
-        // Display correct movie in the results div
-        ghibliApp.displayMovie(correctMovie); 
-    }
+    } while (ghibliApp.moviesAsked.includes(newMovie.title)); 
+
+    correctMovie = newMovie;
+    // Assign the correct movie answer to a correctMovie variable 
+    ghibliApp.correctAnswer = correctMovie.title;
+    // Push the correct movie title to the moviesAsked array
+    ghibliApp.moviesAsked.push(ghibliApp.correctAnswer);
+    // Display correct movie description
+    const paragraphElement = document.querySelector('.question-paragraph');
+    paragraphElement.innerHTML = correctMovie.description;
+    // Display correct movie in the results div
+    ghibliApp.displayMovie(correctMovie); 
+
     console.log(correctMovie.title);
+    console.log(ghibliApp.moviesAsked);
 }
 
 // Method that sets up event listeners for the quiz form and buttons
