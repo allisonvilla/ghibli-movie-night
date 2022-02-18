@@ -11,14 +11,16 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@200;300;400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
 <body>
     <header>
         <div class="header-container">
-            <h1>Studio Ghibli Movie Night</h1>
-            <h2>How well do you know your Studio Ghibli movies?</h2>
-            <p>Guess the correct movie title based on its description!</p>
+            <h1 class="animate__animated animate__bounceInDown animate__slow">Studio Ghibli Movie Night</h1>
+            <h2 class="animate__animated">How well do you know your Studio Ghibli movies?</h2>
+            <p class="animate__animated">Guess the correct movie title based on its description!</p>
             <button class="play-now">Play Now!</button>
         </div> <!-- END .header-container -->
     </header>
@@ -46,6 +48,7 @@
 
                             <button class="check">Check Answer</button>
                         </form>
+                        <button class="more-info hidden-results">Learn more about </button>
                         <button class="next">Next Question</button>
                 </div> <!-- END .quiz -->
 
@@ -66,7 +69,17 @@
             <div class="wrapper">
                 <h2 id="movie-title"></h2>
                 <hr>
+                <div class="movie-info">
+                    <p id="director"></p>
+                    <div class="rt-score-container">
+                        <img src="./assets/rotten-tomatoes-logo.png" alt="rotten tomatoes logo">
+                        <p id="rt-score"></p>
+                    </div>
+                    <p id="release-date"></p>
+                </div>
                 <div id="movie-img"></div>
+                <!-- A button to return to the quiz -->
+                <button class="return">Return to the quiz!</button>
             </div> <!-- END .wrapper -->
         </div> <!-- END .results-->
     </main>

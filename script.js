@@ -51,18 +51,19 @@ ghibliApp.getMovie = function() {
     const url = new URL(ghibliApp.apiUrl); 
     url.search = new URLSearchParams({
         // Only grabbing the fields we need
-        fields: 'title,description,movie_banner'
+        fields: 'title,description,movie_banner,rt_score,director,release_date'
     });
     fetch(url)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(jsonResponse){
+        .then(function (jsonResponse) {
             // Narrow the initial array (jsonResponse) into 4 random movies
             numberOfMovies = 4;
-            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies); 
+            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies);
             ghibliApp.gameSetup(randomMovies);
-        }); 
+            console.log(randomMovies);
+        });
 }
 
 // Initialize quiz game variables
@@ -100,15 +101,33 @@ ghibliApp.gameSetup = function(apiData) {
 ghibliApp.quizEventListener = function() {
     const checkButton = document.querySelector('.check');
     const nextButton = document.querySelector('.next');
+    const moreInfoButton = document.querySelector('.more-info');
     // Event listener when the user clicks 'Check Answer'
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
+
+
+        // Display next and more informaition button
+        nextButton.style.opacity = '1';
+        moreInfoButton.style.opacity = '1';
+
+        // fade in the more information button
+        moreInfoButton.classList.add('animate__animated', 'animate__slideInDown');
+        moreInfoButton.classList.remove('animate__slideOutUp', 'animate__faster');
+        
+
+        // When more information button is clicked, the document will scroll to show more information about the correct movie
+        moreInfoButton.addEventListener('click', function (event) {
+            document.querySelector('.results').scrollIntoView({
+                behavior: 'smooth'
+            }); 
+        })
+
         // Hide Check Answer button
         checkButton.style.display = 'none';
         // Call method that colour codes the options as correct/incorrect
         ghibliApp.answerStyling();
-        // Display next button
-        nextButton.style.opacity = '1';
+
         // Display the results div
         const results = document.querySelector('.results');
         results.style.display = 'flex';
@@ -116,8 +135,13 @@ ghibliApp.quizEventListener = function() {
     // Event listener when the user clicks 'Next Question'
     nextButton.addEventListener('click', function(event) {
         event.preventDefault();
-        // Hide submit button
+        
+        moreInfoButton.classList.remove('animate__slideInDown');
+        moreInfoButton.classList.add('animate__slideOutUp', 'animate__faster');
+        // Hide submit and more information button
         nextButton.style.opacity = '0';
+        // moreInfoButton.style.opacity = '0';
+
         // Call game logic method
         ghibliApp.gameLogic();
         // Remove colour coded labels from previous answer
@@ -136,17 +160,43 @@ ghibliApp.displayMovie = function(apiData) {
     // Target the elements where movie data will be displayed
     ghibliApp.titleEl = document.querySelector('#movie-title');
     ghibliApp.imgContainer = document.querySelector('#movie-img');
-    // Store title and description from json response 
+    ghibliApp.directorEl = document.querySelector('#director');
+    ghibliApp.releaseDateEl = document.querySelector('#release-date');
+    ghibliApp.rtScoreEl = document.querySelector('#rt-score');
+
+    ghibliApp.moreInfoButton = document.querySelector('.more-info');
+
+    // Store title, director, running time, rotten tomatoes score and description from json response 
     movieTitle = apiData.title;
     movieDesc = apiData.description;
-    // Display title
+    releaseDate = apiData.release_date;
+    director = apiData.director;
+    rtScore = apiData.rt_score;
+    // Display title on results page and within learn more button
     ghibliApp.titleEl.innerHTML = movieTitle;
+    ghibliApp.moreInfoButton.textContent = `Learn more about ${movieTitle}!`;
     // Create an image element
     const image = document.createElement('img');
     image.src = apiData.movie_banner;
     image.alt = `A Studio Ghibli movie banner`;
     // Append image element to image container div
     ghibliApp.imgContainer.appendChild(image);
+    // Display running time, director and rotten tomatoes score
+    ghibliApp.directorEl.textContent = `Director: ${director}`;
+    ghibliApp.rtScoreEl.textContent = `${rtScore}%`;
+    ghibliApp.releaseDateEl.textContent = `Release Year: ${releaseDate}`;
+
+    // A button that will send the user back to the quiz to continue
+    const returnButton = document.querySelector('.return');
+    
+    returnButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        document.querySelector('.quiz-section').scrollIntoView({
+            behavior: 'smooth'
+        });     
+    });
+
 }
 
 // Method that changes the radio input styling of correct/wrong answers
