@@ -66,7 +66,6 @@ ghibliApp.getMovie = function() {
             numberOfMovies = 4;
             const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies);
             ghibliApp.gameSetup(randomMovies);
-            console.log(randomMovies);
         })
         .catch(function() {
             const errorMessage = document.querySelector('h3');
@@ -112,8 +111,9 @@ ghibliApp.gameSetup = function(apiData) {
     // Check if the new correct movie title has already been asked
     if (ghibliApp.moviesAsked.includes(correctMovie.title)) {
         // If it's been asked, run arrayRandomiser again
-        let correctMovie = ghibliApp.arrayRandomiser(apiData);
+        correctMovie = ghibliApp.arrayRandomiser(apiData);
         console.log(`This question has already been asked`);
+        console.log(`The new correct movie is ${correctMovie.title}`);
     } else {
         console.log(`This question has not been asked`);
         // Assign the correct movie answer to a correctMovie variable 
