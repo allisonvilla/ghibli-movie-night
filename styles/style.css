@@ -324,6 +324,7 @@ hr {
   background-color: rgba(44, 115, 134, 0.6);
   border-radius: 5px;
   width: 90%;
+  height: 80%;
   padding: 30px;
   text-align: center;
   -webkit-box-pack: center;
@@ -426,6 +427,19 @@ hr {
   display: none;
 }
 .results .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 50px;
   background-color: rgba(44, 115, 134, 0.6);
   border-radius: 5px;
@@ -436,10 +450,95 @@ hr {
   text-align: center;
   color: white;
 }
-
-#movie-img {
+.results .wrapper #movie-img {
   width: 60%;
   height: 100%;
-  margin: 0 auto;
   opacity: 1;
+}
+.results .wrapper hr {
+  margin-top: 10px;
+}
+
+@media (max-width: 1015px) {
+  html {
+    font-size: 115%;
+  }
+
+  .header-container {
+    margin: 0 50px;
+  }
+
+  .results .wrapper #movie-img {
+    width: 70%;
+  }
+}
+@media (max-width: 565px) {
+  .quiz-section .wrapper form label {
+    width: 90%;
+  }
+
+  .results .wrapper #movie-img {
+    width: 95%;
+  }
+}
+@media (max-width: 510px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .quiz-section .wrapper {
+    height: 85%;
+  }
+}
+@media (max-width: 445px) {
+  header .header-container {
+    height: 75%;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+  }
+  header p {
+    margin-bottom: 30px;
+  }
+
+  .quiz-section .wrapper {
+    margin: 30px 5px;
+    padding: 15px;
+    width: 90%;
+  }
+  .quiz-section .wrapper form label {
+    width: 95%;
+  }
+  .quiz-section .wrapper .end-game {
+    padding: 60px 5px;
+  }
+  .quiz-section .wrapper hr {
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 405px) {
+  .header-container {
+    margin: 0 40px;
+  }
+
+  .results .wrapper {
+    width: 95%;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+  }
+  .results .wrapper #movie-img {
+    width: 100%;
+  }
+}
+@media (max-width: 385px) {
+  .header-container {
+    margin: 0 20px;
+  }
+
+  .quiz-section .wrapper {
+    height: 87%;
+  }
 }

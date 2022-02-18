@@ -12,59 +12,68 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
     <header>
-        <h1>Studio Ghibli Movie Night</h1>
-        <h2>How well do you know your Studio Ghibli movies?</h2>
-        <p>Guess the correct movie title based on its description!</p>
-        <button class="play-now">Play Now!</button>
+        <div class="header-container">
+            <h1>Studio Ghibli Movie Night</h1>
+            <h2>How well do you know your Studio Ghibli movies?</h2>
+            <p>Guess the correct movie title based on its description!</p>
+            <button class="play-now">Play Now!</button>
+        </div> <!-- END .header-container -->
     </header>
 
-    <!-- Gameplay Elements -->
-    <div class="quiz-section">
-        <div class="wrapper">
-            <div class="quiz">        
-                    <h3>Question <span class='question-number'>1</span>/4</h3>
-                    <p class='question-paragraph'></p>
-                    <hr>
-                    <form id="quiz-form">
-                        <input type="radio" name="quiz" id="choice-1" class="choice" value="">
-                        <label for="choice-1"><span class="label"></span></label>
+    <main>
+        <!-- Gameplay Elements -->
+        <div class="quiz-section">
+            <div class="wrapper">
+                <div class="quiz">        
+                        <h3>Question <span class='question-number'>1</span>/4</h3>
+                        <p class='question-paragraph'></p>
+                        <hr>
+                        <form id="quiz-form">
+                            <input type="radio" name="quiz" id="choice-1" class="choice" value="">
+                            <label for="choice-1"><span class="label"></span></label>
 
-                        <input type="radio" name="quiz" id="choice-2" class="choice" value="">
-                        <label for="choice-2"><span class="label"></span></label>
+                            <input type="radio" name="quiz" id="choice-2" class="choice" value="">
+                            <label for="choice-2"><span class="label"></span></label>
 
-                        <input type="radio" name="quiz" id="choice-3" class="choice" value="">
-                        <label for="choice-3"><span class="label"></span></label>
+                            <input type="radio" name="quiz" id="choice-3" class="choice" value="">
+                            <label for="choice-3"><span class="label"></span></label>
 
-                        <input type="radio" name="quiz" id="choice-4" class="choice" value="">
-                        <label for="choice-4" value="choice-4"><span class="label"></span></label>
+                            <input type="radio" name="quiz" id="choice-4" class="choice" value="">
+                            <label for="choice-4" value="choice-4"><span class="label"></span></label>
 
-                        <button class="check">Check Answer</button>
-                    </form>
-                    <button class="next">Next Question</button>
-            </div> <!-- END .quiz -->
+                            <button class="check">Check Answer</button>
+                        </form>
+                        <button class="next">Next Question</button>
+                </div> <!-- END .quiz -->
 
-            <!-- End Game Results -->
-            <div class="end-game">
-                <h2>Your Final Score: <span class="score"></span>/4</h2>
-                <div class="p-btn-container">
-                    <p class="quote"></p>
-                    <p class="source"></p>
-                    <button id="reload">Let's Play Again!</button>
-                </div> <!-- END .p-btn-container -->
-            </div> <!-- END .end-game -->
-        </div> <!-- END .wrapper -->
-    </div> <!-- END .quiz-section -->
+                <!-- End Game Results -->
+                <div class="end-game">
+                    <h2>Your Final Score: <span class="score"></span>/4</h2>
+                    <div class="p-btn-container">
+                        <p class="quote"></p>
+                        <p class="source"></p>
+                        <button id="reload">Let's Play Again!</button>
+                    </div> <!-- END .p-btn-container -->
+                </div> <!-- END .end-game -->
+            </div> <!-- END .wrapper -->
+        </div> <!-- END .quiz-section -->
 
-    <!-- Correct Movie Results Display -->
-    <div class="results">
-        <div class="wrapper">
-            <h2 id="movie-title"></h2>
-            <hr>
-            <div id="movie-img"></div>
-        </div> <!-- END .wrapper -->
-    </div> <!-- END .results-->
+        <!-- Correct Movie Results Display -->
+        <div class="results">
+            <div class="wrapper">
+                <h2 id="movie-title"></h2>
+                <hr>
+                <div id="movie-img"></div>
+            </div> <!-- END .wrapper -->
+        </div> <!-- END .results-->
+    </main>
+
+    <footer>
+
+    </footer>
 
     <script src="./script.js"></script>
 </body>

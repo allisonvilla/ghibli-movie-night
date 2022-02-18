@@ -36,11 +36,9 @@ ghibliApp.quotes = [
     source: `Sophie Hatter, 'Howl's Moving Castle' (2004)`}, 
     { quote: `No matter how many weapons you have, no matter how great your technology might be, the world cannot live without love.`, 
     source: `Sheeta, 'Castle In The Sky' (1986)`}, 
-    { quote: `Once You've Met Someone, You Never Really Forget Them.`, 
+    { quote: `Once you've met someone, you never really forget them.`, 
     source: `'Spirited Away' (2001)`}
 ]
-
-console.log(ghibliApp.quotes[0].quote);
 
 // Method which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
@@ -62,7 +60,7 @@ ghibliApp.getMovie = function() {
         .then(function(jsonResponse){
             // Narrow the initial array (jsonResponse) into 4 random movies
             numberOfMovies = 4;
-            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies)
+            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies); 
             ghibliApp.gameSetup(randomMovies);
         }); 
 }
