@@ -1,0 +1,116 @@
+@media (max-width: 1015px) {
+    html {
+        font-size: 115%; 
+    }
+
+    .header-container {
+        margin: 0 50px; 
+    }
+
+    .results {
+        .wrapper {
+            #movie-img {
+                width: 70%; 
+            }
+        }
+    }
+}
+
+@media (max-width: 565px) {
+    .quiz-section {
+        .wrapper {
+            form label {
+                width: 90%;
+            }
+        }
+    }
+
+    .results {
+        .wrapper {
+            #movie-img {
+                width: 95%; 
+            }
+        }
+    }
+}
+
+@media (max-width: 510px) {
+    h1 {
+        font-size: 3.5rem; 
+    }
+
+    .quiz-section {
+        .wrapper {
+            height: 85%; 
+        }
+    }
+}
+
+@media (max-width: 445px) {
+    header {
+        .header-container {
+            height: 75%;  
+        }
+
+        h1 {
+            font-size: 3rem; 
+            margin-bottom: 50px;
+        }
+
+        p {
+            margin-bottom: 30px; 
+        }
+    }
+
+    .quiz-section {
+        .wrapper {
+            margin: 30px 5px;
+            padding: 15px;
+            width: 90%; 
+
+            form label {
+                width: 95%;
+            }
+
+            .end-game {
+                padding: 60px 5px; 
+            }
+
+            hr {
+                margin-top: 25px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: 405px) {
+    .header-container {
+        margin: 0 40px;
+    }
+
+    .results {
+        .wrapper {
+            width: 95%; 
+            margin-left: 20px; 
+            margin-right: 20px; 
+            padding: 20px; 
+
+            #movie-img {
+                width: 100%; 
+            }
+        }
+    }
+}
+
+@media (max-width: 385px) {
+    .header-container {
+        margin: 0 20px;
+    }
+
+    .quiz-section {
+        .wrapper {
+            height: 87%; 
+        }
+    }
+}

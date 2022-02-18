@@ -7,7 +7,12 @@
     background-image: url(../assets/ponyo.png);
     background-size: cover;
     display: none;
+
     .wrapper {
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
         border-radius: 5px;
@@ -17,12 +22,15 @@
         padding:30px;
         text-align: center;
         color:white; 
-    } 
-}
-
-#movie-img {
+        
+        #movie-img {
             width: 60%;
             height:100%;
-            margin: 0 auto;
             opacity: 1;
+        }
+
+        hr {
+            margin-top: 10px; 
+        }
+    }
 }
