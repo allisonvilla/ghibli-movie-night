@@ -7,7 +7,7 @@ ghibliApp.init = function() {
     // Event listener for 'Play Now' button, which scrolls down to the game
     document.querySelector('.play-now').addEventListener('click', function (event) {
         event.preventDefault();
-        document.querySelector('.quiz').scrollIntoView({
+        document.querySelector('.quiz-section').scrollIntoView({
             behavior: 'smooth'
         });
     });
@@ -17,6 +17,30 @@ ghibliApp.init = function() {
     });
     ghibliApp.quizEventListener();
 }
+
+// Array of Ghibli Movie Quotes
+ghibliApp.quotes = [
+    { quote: `You cannot alter your fate. However you can rise to meet it.`,
+    source: `Hii-Sama, 'Princess Mononoke' (1997)`}, 
+    { quote: `Try laughing. Then whatever scares you will go away.`, 
+    source: `Tatsuo Kusakabe, 'My Neighbor Totoro' (1988)`}, 
+    { quote: `Always believe in yourself. Do this and no matter where you are, you will have nothing to fear.`, 
+    source: `The Baron, 'The Cat Returns' (2002)`}, 
+    { quote: `Whenever someone creates something with all of their heart, then that creation is given a soul.`, 
+    source: `The Baron, 'The Cat Returns' (2002)`}, 
+    { quote: `It's not really important what color your dress is. What matters is the heart inside.`, 
+    source: `Kokiri, 'Kiki's Delivery Service' (1989)`}, 
+    { quote: `Just follow your heart and keep smiling.`, 
+    source: `'Kiki's Delivery Service' (1989)`}, 
+    { quote: `They say the best blaze burns brightest, when circumstances are at their worst.`, 
+    source: `Sophie Hatter, 'Howl's Moving Castle' (2004)`}, 
+    { quote: `No matter how many weapons you have, no matter how great your technology might be, the world cannot live without love.`, 
+    source: `Sheeta, 'Castle In The Sky' (1986)`}, 
+    { quote: `Once You've Met Someone, You Never Really Forget Them.`, 
+    source: `'Spirited Away' (2001)`}
+]
+
+console.log(ghibliApp.quotes[0].quote);
 
 // Method which accepts an array as an argument and returns a random index
 ghibliApp.arrayRandomiser = function(array) {
@@ -142,6 +166,11 @@ ghibliApp.answerStyling = function() {
                 label.style.backgroundColor = 'Red';
             }
         }
+        // Always turn correct label green
+        if (label.textContent == ghibliApp.correctAnswer) {
+            label.style.backgroundColor = 'Green';
+            label.style.color = 'White'; 
+        }
     });
 }
 
@@ -166,9 +195,15 @@ ghibliApp.gameLogic = function() {
         document.querySelector('.quiz').style.display = 'none'; 
         // Clear display
         document.querySelector('.results').innerHTML = '';
-        // Show end game results
+        // Display end game results
         document.querySelector('.end-game').style.display = 'flex';
         document.querySelector('.score').textContent = `${ghibliApp.userScore}`; 
+        // Display random quote
+        const quoteObject = ghibliApp.arrayRandomiser(ghibliApp.quotes);
+        const quote = quoteObject.quote;
+        const source = quoteObject.source; 
+        document.querySelector('.quote').textContent = `"${quote}"`;
+        document.querySelector('.source').textContent = `- ${source}`;
     }
 }
 
