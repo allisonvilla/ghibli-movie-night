@@ -7,7 +7,7 @@ ghibliApp.init = function() {
     // Event listener for 'Play Now' button, which scrolls down to the game
     document.querySelector('.play-now').addEventListener('click', function (event) {
         event.preventDefault();
-        document.querySelector('.quiz').scrollIntoView({
+        document.querySelector('.quiz-section').scrollIntoView({
             behavior: 'smooth'
         });
     });
