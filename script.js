@@ -106,13 +106,16 @@ ghibliApp.gameSetup = function(apiData) {
             labelElement[i].textContent = apiData[i].title;
         }
     });
+
     // Choose one of the movies from the array and assign it as the correct answer   
     let correctMovie = ghibliApp.arrayRandomiser(apiData);
     // Check if the new correct movie title has already been asked
-    if (ghibliApp.moviesAsked.isArray(correctMovie.title)) {
+    if (ghibliApp.moviesAsked.includes(correctMovie.title)) {
         // If it's been asked, run arrayRandomiser again
         let correctMovie = ghibliApp.arrayRandomiser(apiData);
+        console.log(`This question has already been asked`);
     } else {
+        console.log(`This question has not been asked`);
         // Assign the correct movie answer to a correctMovie variable 
         ghibliApp.correctAnswer = correctMovie.title; 
         // Push the correct movie title to the moviesAsked array
@@ -138,6 +141,7 @@ ghibliApp.quizEventListener = function() {
         // Display next and more information button
         nextButton.style.opacity = '1';
         moreInfoButton.style.opacity = '1';
+
         // Fade in the more information button
         moreInfoButton.classList.add('animate__animated', 'animate__slideInDown');
         moreInfoButton.classList.remove('animate__slideOutUp', 'animate__faster');
@@ -256,6 +260,7 @@ ghibliApp.gameLogic = function() {
     if (userInput == ghibliApp.correctAnswer) {
         ghibliApp.userScore++; 
     } 
+
     // If numRounds < 4, call getMovie() to get 4 new movies
     if (ghibliApp.numRounds < 4) {
         // Clear the movie img div
