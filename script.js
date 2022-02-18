@@ -117,7 +117,7 @@ ghibliApp.displayMovie = function(apiData) {
     // Store title and description from json response 
     movieTitle = apiData.title;
     movieDesc = apiData.description;
-    // Display Title
+    // Display title
     ghibliApp.titleEl.innerHTML = movieTitle;
     // Create an image element
     const image = document.createElement('img');
@@ -131,11 +131,8 @@ ghibliApp.displayMovie = function(apiData) {
 ghibliApp.answerStyling = function() {
     // Display results div
     document.querySelector('.results').style.display = 'flex'; 
-    // checkButton.style.display = 'block';
     let selectedAnswer = document.querySelector('input[name="quiz"]:checked');
-    let labels = document.querySelectorAll('label')
-    console.log(labels);
-    // Compare user input to correct answer, increase score if necessary
+    let labels = document.querySelectorAll('label'); 
     labels.forEach(label => {
         // Change label colour based on user answer
         if (label.textContent == selectedAnswer.value) {
@@ -152,15 +149,12 @@ ghibliApp.answerStyling = function() {
 ghibliApp.gameLogic = function() {
     // Increase numRounds count
     ghibliApp.numRounds++; 
-    console.log(`Current number of rounds passed is ${ghibliApp.numRounds}`);
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
-    console.log(`User input was ${userInput}`);
     // Compare user input to correct answer, increase score if necessary
     if (userInput == ghibliApp.correctAnswer) {
         ghibliApp.userScore++; 
     } 
-    console.log(`User's current score is ${ghibliApp.userScore}`);
     // If numRounds < 4, call getMovie() to get 4 new movies
     if (ghibliApp.numRounds < 4) {
         // Clear the movie img div
