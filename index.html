@@ -11,7 +11,6 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@200;300;400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 
@@ -33,6 +32,7 @@
                         <h3>Question <span class='question-number'>1</span>/4</h3>
                         <p class='question-paragraph'></p>
                         <hr>
+                        <div class="error-img"></div>
                         <form id="quiz-form">
                             <input type="radio" name="quiz" id="choice-1" class="choice" value="">
                             <label for="choice-1"><span class="label"></span></label>
@@ -64,7 +64,7 @@
             </div> <!-- END .wrapper -->
         </div> <!-- END .quiz-section -->
 
-        <!-- Correct Movie Results Display -->
+        <!-- Correct Movie Info Display -->
         <div class="results">
             <div class="wrapper">
                 <h2 id="movie-title"></h2>
@@ -74,9 +74,9 @@
                     <div class="rt-score-container">
                         <img src="./assets/rotten-tomatoes-logo.png" alt="rotten tomatoes logo">
                         <p id="rt-score"></p>
-                    </div>
+                    </div> <!-- END .rt-score-container -->
                     <p id="release-date"></p>
-                </div>
+                </div> <!-- END .movie-info -->
                 <div id="movie-img"></div>
                 <!-- A button to return to the quiz -->
                 <button class="return">Return to the quiz!</button>

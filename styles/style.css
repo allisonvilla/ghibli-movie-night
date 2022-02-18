@@ -427,6 +427,11 @@ hr {
   max-width: 50%;
 }
 
+.error-img img {
+  max-width: 100%;
+  width: 20%;
+}
+
 .results {
   display: none;
   -webkit-box-orient: vertical;

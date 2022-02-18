@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+
     .wrapper { 
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
@@ -15,8 +16,6 @@
         padding:50px;
         text-align: center;
         display: flex;
-
-        // align-items: center;
         justify-content: center;
         color:white;
 
@@ -101,5 +100,13 @@
         button {
             max-width: 50%; 
         }
+    }
+}
+
+// Error Image
+.error-img {
+    img {
+        max-width: 100%; 
+        width: 20%; 
     }
 }
