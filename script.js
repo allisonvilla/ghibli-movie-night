@@ -93,9 +93,11 @@ ghibliApp.moviesAsked = []
 ghibliApp.gameSetup = function(apiData) {
     // Hide the results div
     document.querySelector('.results').style.display = 'none'; 
+
     // Update question number span
     const roundEl = document.querySelector('.question-number');
     roundEl.innerHTML = this.numRounds + 1;
+
     // Display movie titles as options
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
@@ -105,17 +107,19 @@ ghibliApp.gameSetup = function(apiData) {
             labelElement[i].textContent = apiData[i].title;
         }
     });
-    // Choose one of the movies from the array and assign it as the correct answer   
+
+    // Choose one of the movies from the array to be the correct answer
     let newMovie = ghibliApp.arrayRandomiser(apiData);
     let correctMovie = '';
-    // Check if the new correct movie title has already been asked and choose a new one if it has
+    // If the new chosen movie has already been asked before, keep choosing a new one
     do {
         newMovie = ghibliApp.arrayRandomiser(apiData);
         console.log(`This question has already been asked`);
-    } while (ghibliApp.moviesAsked.includes(newMovie.title)); 
+    } while (ghibliApp.moviesAsked.includes(newMovie.title));
 
+    // Assign the new unique movie as the correct movie
     correctMovie = newMovie;
-    // Assign the correct movie answer to a correctMovie variable 
+    // Assign the correct movie answer to a correctAnswer variable that is checked on submit
     ghibliApp.correctAnswer = correctMovie.title;
     // Push the correct movie title to the moviesAsked array
     ghibliApp.moviesAsked.push(ghibliApp.correctAnswer);
