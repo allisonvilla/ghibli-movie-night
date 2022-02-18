@@ -503,6 +503,45 @@ hr {
   margin-bottom: 0px;
 }
 
+footer {
+  background-color: #2c7386;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0px 10px 0px;
+  font-weight: 200;
+  width: 100%;
+}
+footer p {
+  margin: 2px auto;
+  font-size: 0.7rem;
+  padding-bottom: 2px;
+}
+footer p.small-copy {
+  font-size: 0.6rem;
+  margin-bottom: 2px;
+}
+footer a {
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+footer a:hover, footer a:focus {
+  border-bottom: 2px solid #49c24d;
+}
+
 @media (max-width: 1015px) {
   html {
     font-size: 115%;
