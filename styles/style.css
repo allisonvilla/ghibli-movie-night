@@ -376,7 +376,7 @@ hr {
   background-color: #2c7386;
 }
 .quiz-section .wrapper .next, .quiz-section .wrapper .more-info {
-  opacity: 0%;
+  display: none;
 }
 .quiz-section .wrapper .more-info {
   margin: 0 auto;

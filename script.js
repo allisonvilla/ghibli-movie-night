@@ -145,8 +145,8 @@ ghibliApp.quizEventListener = function() {
         event.preventDefault();
 
         // Display next and more information button
-        nextButton.style.opacity = '1';
-        moreInfoButton.style.opacity = '1';
+        nextButton.style.display = 'inline-block';
+        moreInfoButton.style.display = 'inline-block';
 
         // Fade in the more information button
         moreInfoButton.classList.add('animate__animated', 'animate__slideInDown');
@@ -177,7 +177,7 @@ ghibliApp.quizEventListener = function() {
         moreInfoButton.classList.add('animate__slideOutUp', 'animate__faster');
 
         // Hide submit and more information button
-        nextButton.style.opacity = '0';
+        nextButton.style.display = 'none';
 
         // Call game logic method
         ghibliApp.gameLogic();
@@ -242,6 +242,7 @@ ghibliApp.displayMovie = function(apiData) {
 ghibliApp.answerStyling = function() {
     // Display results div
     document.querySelector('.results').style.display = 'flex'; 
+    
     let selectedAnswer = document.querySelector('input[name="quiz"]:checked');
     let labels = document.querySelectorAll('label'); 
     labels.forEach(label => {
