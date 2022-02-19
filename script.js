@@ -70,10 +70,13 @@ ghibliApp.getMovie = function() {
         .catch(function() {
             const errorMessage = document.querySelector('h3');
             const errorImg = document.createElement('img');
+
             // Display error message
             errorMessage.textContent = `Sorry! We're currently experiencing some technical difficulties. Please try again in a few minutes by refreshing the page.`;
+
             // Hide quiz inputs
             document.querySelector('#quiz-form').style.display = 'none';
+
             // Add a cute image to make the user feel better
             errorImg.src = './assets/calcifer.gif';
             errorImg.setAttribute('aria-hidden', true);
@@ -82,7 +85,7 @@ ghibliApp.getMovie = function() {
 }
 
 // Initialize quiz game variables
-ghibliApp.correctAnswer = '';
+ghibliApp.correctMovie = '';
 ghibliApp.userScore = 0; 
 ghibliApp.numRounds = 0; 
 
@@ -110,7 +113,7 @@ ghibliApp.gameSetup = function(apiData) {
 
     // Choose one of the movies from the array to be the correct answer
     let newMovie = ghibliApp.arrayRandomiser(apiData);
-    let correctMovie = '';
+    
     // If the new chosen movie has already been asked before, keep choosing a new one
     do {
         newMovie = ghibliApp.arrayRandomiser(apiData);
@@ -118,18 +121,16 @@ ghibliApp.gameSetup = function(apiData) {
     } while (ghibliApp.moviesAsked.includes(newMovie.title));
 
     // Assign the new unique movie as the correct movie
-    correctMovie = newMovie;
-    // Assign the correct movie answer to a correctAnswer variable that is checked on submit
-    ghibliApp.correctAnswer = correctMovie.title;
+    ghibliApp.correctMovie = newMovie;
     // Push the correct movie title to the moviesAsked array
-    ghibliApp.moviesAsked.push(ghibliApp.correctAnswer);
+    ghibliApp.moviesAsked.push(ghibliApp.correctMovie.title);
     // Display correct movie description
     const paragraphElement = document.querySelector('.question-paragraph');
-    paragraphElement.innerHTML = correctMovie.description;
+    paragraphElement.innerHTML = ghibliApp.correctMovie.description;
     // Display correct movie in the results div
-    ghibliApp.displayMovie(correctMovie); 
+    ghibliApp.displayMovie(ghibliApp.correctMovie); 
 
-    console.log(correctMovie.title);
+    console.log(ghibliApp.correctMovie.title);
     console.log(ghibliApp.moviesAsked);
 }
 
@@ -142,6 +143,7 @@ ghibliApp.quizEventListener = function() {
     // Event listener when the user clicks 'Check Answer'
     document.querySelector('#quiz-form').addEventListener('submit', function(event) {
         event.preventDefault();
+
         // Display next and more information button
         nextButton.style.opacity = '1';
         moreInfoButton.style.opacity = '1';
@@ -156,10 +158,13 @@ ghibliApp.quizEventListener = function() {
                 behavior: 'smooth'
             }); 
         })
+
         // Hide Check Answer button
         checkButton.style.display = 'none';
+
         // Call method that colour codes the options as correct/incorrect
         ghibliApp.answerStyling();
+
         // Display the results div
         const results = document.querySelector('.results');
         results.style.display = 'flex';
@@ -173,6 +178,7 @@ ghibliApp.quizEventListener = function() {
 
         // Hide submit and more information button
         nextButton.style.opacity = '0';
+
         // Call game logic method
         ghibliApp.gameLogic();
 
@@ -182,6 +188,7 @@ ghibliApp.quizEventListener = function() {
             label.style.backgroundColor = '';
             label.style.color = '';
         });
+
         // Show check answer button
         checkButton.style.display = 'block';
     });
@@ -240,14 +247,15 @@ ghibliApp.answerStyling = function() {
     labels.forEach(label => {
         // Change label colour based on user answer
         if (label.textContent == selectedAnswer.value) {
-            if (selectedAnswer.value == ghibliApp.correctAnswer) {
+            if (selectedAnswer.value == ghibliApp.correctMovie.title) {
                 label.style.backgroundColor = 'Green';
             } else {
                 label.style.backgroundColor = 'Red';
             }
         }
+
         // Always turn correct label green
-        if (label.textContent == ghibliApp.correctAnswer) {
+        if (label.textContent == ghibliApp.correctMovie.title) {
             label.style.backgroundColor = 'Green';
             label.style.color = 'White'; 
         }
@@ -258,10 +266,12 @@ ghibliApp.answerStyling = function() {
 ghibliApp.gameLogic = function() {
     // Increase numRounds count
     ghibliApp.numRounds++; 
+
     // Store user input
     let userInput = document.querySelector('input[name="quiz"]:checked').value; 
+
     // Compare user input to correct answer, increase score if necessary
-    if (userInput == ghibliApp.correctAnswer) {
+    if (userInput == ghibliApp.correctMovie.title) {
         ghibliApp.userScore++; 
     } 
 
@@ -274,11 +284,14 @@ ghibliApp.gameLogic = function() {
     } else {
         // Hide quiz div
         document.querySelector('.quiz').style.display = 'none'; 
+
         // Clear display
         document.querySelector('.results').innerHTML = '';
+
         // Display end game results
         document.querySelector('.end-game').style.display = 'flex';
         document.querySelector('.score').textContent = `${ghibliApp.userScore}`; 
+
         // Display random quote
         const quoteObject = ghibliApp.arrayRandomiser(ghibliApp.quotes);
         const quote = quoteObject.quote;
