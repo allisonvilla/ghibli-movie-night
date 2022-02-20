@@ -117,7 +117,6 @@ ghibliApp.gameSetup = function(apiData) {
     // If the new chosen movie has already been asked before, keep choosing a new one
     do {
         newMovie = ghibliApp.arrayRandomiser(apiData);
-        console.log(`This question has already been asked`);
     } while (ghibliApp.moviesAsked.includes(newMovie.title));
 
     // Assign the new unique movie as the correct movie
@@ -129,9 +128,6 @@ ghibliApp.gameSetup = function(apiData) {
     paragraphElement.innerHTML = ghibliApp.correctMovie.description;
     // Display correct movie in the results div
     ghibliApp.displayMovie(ghibliApp.correctMovie); 
-
-    console.log(ghibliApp.correctMovie.title);
-    console.log(ghibliApp.moviesAsked);
 }
 
 // Method that sets up event listeners for the quiz form and buttons
