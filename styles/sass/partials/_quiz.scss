@@ -55,11 +55,11 @@
 
         // Next Question Button and more information button hidden by default 
         .next, .more-info {
-            opacity: 0%;
+            display: none; 
         }
 
         .more-info {
-            margin:0 auto;
+            margin: 0 auto;
             // background-color: #ead3c8;
             position: absolute;
             top:10px;
