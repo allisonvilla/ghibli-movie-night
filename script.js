@@ -121,11 +121,14 @@ ghibliApp.gameSetup = function(apiData) {
 
     // Assign the new unique movie as the correct movie
     ghibliApp.correctMovie = newMovie;
+
     // Push the correct movie title to the moviesAsked array
     ghibliApp.moviesAsked.push(ghibliApp.correctMovie.title);
+
     // Display correct movie description
     const paragraphElement = document.querySelector('.question-paragraph');
     paragraphElement.innerHTML = ghibliApp.correctMovie.description;
+
     // Display correct movie in the results div
     ghibliApp.displayMovie(ghibliApp.correctMovie); 
 }
@@ -234,7 +237,7 @@ ghibliApp.displayMovie = function(apiData) {
     });
 }
 
-// Method that changes the radio input styling of correct/wrong answers
+// Method that changes the radio input styling of correct/incorrect answers
 ghibliApp.answerStyling = function() {
     // Display results div
     document.querySelector('.results').style.display = 'flex'; 
