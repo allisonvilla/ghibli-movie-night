@@ -63,9 +63,14 @@ ghibliApp.getMovie = function() {
         })
         .then(function (jsonResponse) {
             // Narrow the initial array (jsonResponse) into 4 random movies
-            numberOfMovies = 4;
-            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies);
+            //const randomMovies = jsonResponse.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+            const startIndex = Math.floor(Math.random() * jsonResponse.length);
+            const endIndex = startIndex + 4; 
+            const randomMovies = jsonResponse.slice(startIndex, endIndex); 
+
             ghibliApp.gameSetup(randomMovies);
+            console.log(randomMovies);
         })
         .catch(function() {
             const errorMessage = document.querySelector('h3');
