@@ -486,10 +486,14 @@ footer a:hover, footer a:focus {
     width: 70%;
   }
 }
-@media (max-width: 565px) {
+@media (max-width: 765px) {
+  .quiz-section {
+    height: 110vh;
+    align-items: flex-start;
+  }
   .quiz-section .wrapper {
     padding: 25px;
-    height: 50%;
+    height: 80%;
   }
   .quiz-section .wrapper form label {
     width: 90%;
@@ -523,14 +527,6 @@ footer a:hover, footer a:focus {
 @media (max-width: 510px) {
   h1 {
     font-size: 3.5rem;
-  }
-
-  .quiz-section {
-    height: 110vh;
-    align-items: flex-start;
-  }
-  .quiz-section .wrapper {
-    height: 70%;
   }
 }
 @media (max-width: 445px) {

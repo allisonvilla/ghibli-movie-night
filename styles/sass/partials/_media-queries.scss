@@ -16,11 +16,13 @@
     }
 }
 
-@media (max-width: 565px) {
+@media (max-width: 765px) {
     .quiz-section {
+        height:110vh;
+        align-items: flex-start;
         .wrapper {
             padding: 25px;
-            height:50%;
+            height:80%;
             form label {
                 width: 90%;
             }
@@ -62,13 +64,6 @@
         font-size: 3.5rem; 
     }
 
-    .quiz-section {
-        height:110vh;
-        align-items: flex-start;
-        .wrapper {
-            height: 70%; 
-        }
-    }
 }
 
 @media (max-width: 445px) {
