@@ -16,9 +16,13 @@
     }
 }
 
-@media (max-width: 565px) {
+@media (max-width: 765px) {
     .quiz-section {
+        height:110vh;
+        align-items: flex-start;
         .wrapper {
+            padding: 25px;
+            height:80%;
             form label {
                 width: 90%;
             }
@@ -27,14 +31,29 @@
                 width: 150px;
                 font-size: .8rem;
             }
-        }
-        
+            p {
+                height: 20vh;
+                overflow-y: auto;
+            }
+        }        
     }
 
     .results {
         .wrapper {
             #movie-img {
                 width: 95%; 
+            }
+            .movie-info {
+                flex-direction: column;
+                #director {
+                    margin-bottom: 0;
+                }
+                #rt-score {
+                    margin: 15px;
+                }
+                #release-date {
+                    margin-top: 0;
+                }
             }
         }
     }
@@ -45,11 +64,6 @@
         font-size: 3.5rem; 
     }
 
-    .quiz-section {
-        .wrapper {
-            height: 85%; 
-        }
-    }
 }
 
 @media (max-width: 445px) {

@@ -1,12 +1,12 @@
 .quiz-section {
-    background-image: url('../assets/400691.png');
+    background-image: url('../assets/ponyo.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
     display: flex;
     justify-content: center;
     position: relative;
-
+    align-items: center;
     .wrapper { 
         margin:50px;
         background-color: rgba($color: $dark-blue, $alpha: .6);
