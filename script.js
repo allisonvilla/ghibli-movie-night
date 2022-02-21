@@ -61,11 +61,15 @@ ghibliApp.getMovie = function() {
                 throw new Error();
             }
         })
-        .then(function (jsonResponse) {
-            // Narrow the initial array (jsonResponse) into 4 random movies
-            numberOfMovies = 4;
-            const randomMovies = jsonResponse.sort(() => .5 - Math.random()).slice(0, numberOfMovies);
+        .then(function(jsonResponse) {
+            // startIndex selects a random number up to the length of the returned array - 4, which ensures that we never slice less than 4 indexes away from the end of the array
+            const startIndex = Math.floor(Math.random() * (jsonResponse.length - 4));
+            // endIndex is startIndex + 4 to ensure we receive 4 objects from the array
+            const endIndex = startIndex + 4; 
+            const randomMovies = jsonResponse.slice(startIndex, endIndex); 
+
             ghibliApp.gameSetup(randomMovies);
+            console.log(randomMovies);
         })
         .catch(function() {
             const errorMessage = document.querySelector('h3');
@@ -124,6 +128,7 @@ ghibliApp.gameSetup = function(apiData) {
 
     // Push the correct movie title to the moviesAsked array
     ghibliApp.moviesAsked.push(ghibliApp.correctMovie.title);
+    console.log(ghibliApp.moviesAsked);
 
     // Display correct movie description
     const paragraphElement = document.querySelector('.question-paragraph');
