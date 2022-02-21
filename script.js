@@ -67,9 +67,8 @@ ghibliApp.getMovie = function() {
             // endIndex is startIndex + 4 to ensure we receive 4 objects from the array
             const endIndex = startIndex + 4; 
             const randomMovies = jsonResponse.slice(startIndex, endIndex); 
-
+            // Pass the new array as an argument in the gameSetup() method
             ghibliApp.gameSetup(randomMovies);
-            console.log(randomMovies);
         })
         .catch(function() {
             const errorMessage = document.querySelector('h3');
@@ -119,16 +118,15 @@ ghibliApp.gameSetup = function(apiData) {
     let newMovie = ghibliApp.arrayRandomiser(apiData);
     
     // If the new chosen movie has already been asked before, keep choosing a new one
-    do {
+    while (ghibliApp.moviesAsked.includes(newMovie.title)) {
         newMovie = ghibliApp.arrayRandomiser(apiData);
-    } while (ghibliApp.moviesAsked.includes(newMovie.title));
+    }
 
     // Assign the new unique movie as the correct movie
     ghibliApp.correctMovie = newMovie;
 
     // Push the correct movie title to the moviesAsked array
     ghibliApp.moviesAsked.push(ghibliApp.correctMovie.title);
-    console.log(ghibliApp.moviesAsked);
 
     // Display correct movie description
     const paragraphElement = document.querySelector('.question-paragraph');
@@ -163,7 +161,7 @@ ghibliApp.quizEventListener = function() {
             }); 
         })
 
-        // Hide Check Answer button
+        // Hide 'Check Answer' button
         checkButton.style.display = 'none';
 
         // Call method that colour codes the options as correct/incorrect
@@ -180,7 +178,7 @@ ghibliApp.quizEventListener = function() {
         moreInfoButton.classList.remove('animate__slideInDown');
         moreInfoButton.classList.add('animate__slideOutUp', 'animate__faster');
 
-        // Hide submit and more information button
+        // Hide submit and 'More Information' button
         nextButton.style.display = 'none';
 
         // Call game logic method
