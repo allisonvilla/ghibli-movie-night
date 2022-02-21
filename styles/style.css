@@ -302,6 +302,7 @@ hr {
   display: flex;
   justify-content: center;
   position: relative;
+  align-items: center;
 }
 .quiz-section .wrapper {
   margin: 50px;
@@ -486,6 +487,10 @@ footer a:hover, footer a:focus {
   }
 }
 @media (max-width: 565px) {
+  .quiz-section .wrapper {
+    padding: 25px;
+    height: 50%;
+  }
   .quiz-section .wrapper form label {
     width: 90%;
   }
@@ -494,9 +499,25 @@ footer a:hover, footer a:focus {
     width: 150px;
     font-size: 0.8rem;
   }
+  .quiz-section .wrapper p {
+    height: 20vh;
+    overflow-y: auto;
+  }
 
   .results .wrapper #movie-img {
     width: 95%;
+  }
+  .results .wrapper .movie-info {
+    flex-direction: column;
+  }
+  .results .wrapper .movie-info #director {
+    margin-bottom: 0;
+  }
+  .results .wrapper .movie-info #rt-score {
+    margin: 15px;
+  }
+  .results .wrapper .movie-info #release-date {
+    margin-top: 0;
   }
 }
 @media (max-width: 510px) {
@@ -504,8 +525,12 @@ footer a:hover, footer a:focus {
     font-size: 3.5rem;
   }
 
+  .quiz-section {
+    height: 110vh;
+    align-items: flex-start;
+  }
   .quiz-section .wrapper {
-    height: 85%;
+    height: 70%;
   }
 }
 @media (max-width: 445px) {
