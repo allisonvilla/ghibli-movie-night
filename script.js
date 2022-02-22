@@ -107,6 +107,7 @@ ghibliApp.gameSetup = function(apiData) {
     // Display movie titles as options
     const choiceElement = document.querySelectorAll('.choice');
     const labelElement = document.querySelectorAll('.label');
+    choiceElement[0].checked = true;
     choiceElement.forEach(choice => {
         for(let i = 0; i < labelElement.length; i++) {
             choiceElement[i].value = apiData[i].title;
